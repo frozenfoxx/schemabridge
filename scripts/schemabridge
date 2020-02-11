@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+'''
+Run CLI interface for Schemaverse
+'''
+
+import schemabridge
+
+schemabridge.main()
