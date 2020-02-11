@@ -2,6 +2,8 @@
 
 CLI interface for [Schemaverse](https://schemaverse.com/).
 
+Docker Hub: [https://hub.docker.com/r/frozenfoxx/schemabridge](https://hub.docker.com/r/frozenfoxx/schemabridge).
+
 # Requirements
 
 * python 3+
