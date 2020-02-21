@@ -1,8 +1,12 @@
 """ The collection of ships for the player """
 
+if __package__:
+    from .ship import Ship
+else:
+    from ship import Ship
+
 import psycopg2
 from psycopg2.extras import DictCursor
-from .ship import Ship
 
 class Armada(object):
     """ All ships under a player's control """

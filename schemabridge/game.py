@@ -1,9 +1,13 @@
 """ Objects and functions related to the state of the game """
 
+if __package__:
+    from .planet import Planet
+    from .player import Player
+else:
+    from planet import Planet
+    from player import Player
 import psycopg2
 from psycopg2.extras import DictCursor
-from .planet import Planet
-from .player import Player
 
 class Game(object):
     """ Game state """
