@@ -1,8 +1,9 @@
 """ Configuration loading and argument handling """
 
-import sys
 import argparse
 import configparser
+import os
+import sys
 
 class Options(object):
     """ Option-handling Object """
