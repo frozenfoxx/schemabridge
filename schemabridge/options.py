@@ -14,7 +14,7 @@ class Options(object):
         """ Parse optional arguments """
 
         parser = argparse.ArgumentParser()
-        parser.add_argument("-c", "--config", dest="config", type=str, help="path to config file")
+        parser.add_argument("-c", "--config", dest="config", default="/etc/schemabridge/conf/schemabridge.conf", type=str, help="path to config file")
         parser.add_argument("--host", dest="host", type=str, help="database host")
         parser.add_argument("--port", dest="port", type=str, help="database port")
         parser.add_argument("-u", "--username", dest="username", type=str, help="account name")
@@ -31,20 +31,19 @@ class Options(object):
         args = self.parse_args()
         conf = configparser.ConfigParser()
 
-        print("[+] Loading configuration")
-        if isinstance(args.config, str):
-            conf_location = args.config
-        else:
-            conf_location = "/etc/schemabridge/conf/schemabridge.conf"
-
+        print("[+] Reading configuration file")
         try:
-            conf.read(conf_location)
+            conf.read(args.config)
+            print("[+] Loading options from file")
+            for key in conf[args.environment]:
+                self.options[key] = conf[args.environment][key]
         except Exception as e:
             sys.exit("Unable to read config file, does it exist?")
 
-        print("[+] Loading options from file")
-        for k in conf[args.environment]:
-            self.options[k] = conf[args.environment][k]
+        print("[+] Loading environment variable overrides")
+        for arg in vars(args):
+            if arg.upper() in os.environ:
+                self.options[arg] = os.environ[arg.upper()]
 
         print("[+] Loading argument overrides")
         for arg in vars(args):

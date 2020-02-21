@@ -22,9 +22,9 @@ Docker Hub: [https://hub.docker.com/r/frozenfoxx/schemabridge](https://hub.docke
 
 # Testing
 
-* Create a sample config file from the `conf/schemabridge.conf` and place it somewhere.
+* Create a sample config file, use the environment variables, or arguments to supply player information.
 * `cd [cloned repo root]`
-* `python3 -m schembridge.core -c [path/to/your/schemabridge.conf]`
+* `python3 -m schembridge.schemabridge`
 
 # Legal
 

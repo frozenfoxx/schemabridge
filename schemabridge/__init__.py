@@ -1,3 +1,3 @@
 """ schemabridge init """
 
-from .core import main
+from .schemabridge import main
