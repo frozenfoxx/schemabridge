@@ -5,11 +5,13 @@ FROM python:3-alpine
 LABEL maintainer="FrozenFOXX <frozenfoxx@churchoffoxx.net>"
 
 # Variables
-
-# Install
 WORKDIR /app
 ENV APPDIR="/app"
 
+# Add required packages
+RUN apk -U add build-base
+
+# Set up requirements
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
