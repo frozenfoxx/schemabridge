@@ -1,5 +1,5 @@
 # Base image
-FROM python:3
+FROM python:3-alpine
 
 # Information
 LABEL maintainer="FrozenFOXX <frozenfoxx@churchoffoxx.net>"
