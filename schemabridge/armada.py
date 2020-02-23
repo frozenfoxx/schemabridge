@@ -4,7 +4,6 @@ if __package__:
     from .ship import Ship
 else:
     from ship import Ship
-
 import psycopg2
 from psycopg2.extras import DictCursor
 

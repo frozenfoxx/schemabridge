@@ -26,6 +26,22 @@ Docker Hub: [https://hub.docker.com/r/frozenfoxx/schemabridge](https://hub.docke
 * `cd [cloned repo root]`
 * `python3 -m schembridge.schemabridge`
 
+# Docker
+
+This tool can also be run as a Docker container. This can be combined with the environment variables to launch conveniently:
+
+```
+docker run \
+  -it \
+  --rm \
+  -e HOST="db.schemaverse.com" \
+  -e PORT="5432" \
+  -e DB="schemaverse" \
+  -e USERNAME="[username]" \
+  -e PASSWORD='[password]' \
+  frozenfoxx/schemabridge:latest
+```
+
 # Legal
 
 This project is licensed under the Apache License v2.0. Schemaverse is owned by its owners.
