@@ -132,22 +132,25 @@ class Prompt(Cmd, object):
             ship_create [name]
             ship_create [name] [attack] [defense] [engineering] [prospecting] [location_x] [location_y] """
 
+        # Create a list from the argument string
+        arg_list = args.split(' ')
+        
         if len(args) == 0:
             print("[-] Error: argument list cannot be empty")
-        elif len(args) > 7:
+        elif len(arg_list) > 7:
             print("[-] Error: argument list too long")
         else:
             # Set ship name
-            name = args.split(' ')[0]
+            name = arg_list[0]
 
             # Set ship attrs and location if offered
             stats = []
             if len(args.split(' ')) > 1:
-                stats.append(args.split(' ')[1])
-                stats.append(args.split(' ')[2])
-                stats.append(args.split(' ')[3])
-                stats.append(args.split(' ')[4])
-                location = args.split(' ')[5] + "," + args.split(' ')[6]
+                stats.append(arg_list[1])
+                stats.append(arg_list[2])
+                stats.append(arg_list[3])
+                stats.append(arg_list[4])
+                location = arg_list[5] + "," + arg_list[6]
                 self.armada.create(name, stats, location)
             else:
                 stats.append(5)
