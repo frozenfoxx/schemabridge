@@ -117,15 +117,17 @@ class Prompt(Cmd, object):
         """ Attack a target ship with your own ships
             ship_attack [ship id] [target id] """
 
+        # Create a list from the argument string
+        arg_list = args.split(' ')
+
         # Check argument list
         if len(args) == 0:
             print("[-] Error: argument list cannot be empty")
-        elif len(args.split()) != 2:
+        elif len(arg_list) != 2:
             print("[-] Error: argument list incorrect")
         else:
-            arglist = args.split()
-            self.armada.attack(arglist[0], arglist[1])
-            print("[+] Ships with identifier " + str(arglist[0]) + " set to attack " + str(arglist[1]))
+            self.armada.attack(arg_list[0], arg_list[1])
+            print("[+] Ships with identifier " + str(arg_list[0]) + " set to attack " + str(arg_list[1]))
 
     def do_ship_create(self, args):
         """ Create a ship
@@ -145,7 +147,7 @@ class Prompt(Cmd, object):
 
             # Set ship attrs and location if offered
             stats = []
-            if len(args.split(' ')) > 1:
+            if len(arg_list) > 1:
                 stats.append(arg_list[1])
                 stats.append(arg_list[2])
                 stats.append(arg_list[3])
@@ -164,29 +166,33 @@ class Prompt(Cmd, object):
         """ Order a ship in range of a planet to mine
             ship_mine [ship id] [planet id] """
 
+        # Create a list from the argument string
+        arg_list = args.split(' ')
+
         # Check argument list
         if len(args) == 0:
             print("[-] Error: argument list cannot be empty")
-        elif len(args.split()) != 2:
+        elif len(arg_list) != 2:
             print("[-] Error: argument list incorrect")
         else:
-            arglist = args.split()
-            self.armada.mine(arglist[0], arglist[1])
-            print("[+] Ship with id " + str(arglist[0]) + " ordered to mine planet id " + str(arglist[1]))
+            self.armada.mine(arg_list[0], arg_list[1])
+            print("[+] Ship with id " + str(arg_list[0]) + " ordered to mine planet id " + str(arg_list[1]))
 
     def do_ship_move(self, args):
         """ Move a ship at a speed towards a point
             ship_move [ship id] [max|half] [location_x] [location_y] """
 
+        # Create a list from the argument string
+        arg_list = args.split(' ')
+
         # Check argument list
         if len(args) == 0:
             print("[-] Error: argument list cannot be empty")
-        elif len(args.split()) != 4:
+        elif len(arg_list) != 4:
             print("[-] Error: argument list incorrect")
         else:
-            arglist = args.split()
-            self.armada.move(arglist[0], arglist[1], arglist[2], arglist[3])
-            print("[+] Ship with id " + str(arglist[0]) + " moved to POINT(" + str(arglist[2]) + "," + str(arglist[3]) + ")")
+            self.armada.move(arg_list[0], arg_list[1], arg_list[2], arg_list[3])
+            print("[+] Ship with id " + str(arg_list[0]) + " moved to POINT(" + str(arg_list[2]) + "," + str(arg_list[3]) + ")")
 
     def do_ship_repair(self, args):
         """ Order a ship in range of a target ship to repair
@@ -209,17 +215,19 @@ class Prompt(Cmd, object):
             MAX_HEALTH  MAX_FUEL  MAX_SPEED  RANGE
             ATTACK  DEFENSE  ENGINEERING PROSPECTING"""
 
+        # Create a list from the argument string
+        arg_list = args.split(' ')
+
         # Check argument list
         if len(args) == 0:
             print("[-] Error: argument list cannot be empty")
-        elif len(args.split()) != 3:
+        elif len(arg_list) != 3:
             print("[-] Error: argument list incorrect")
         else:
-            arglist = args.split()
             for ship in self.armada.ships:
-                if ship.ship_id == int(arglist[0]):
-                    ship.upgrade(arglist[1], arglist[2])
-                    print("[+] Ship with id " + str(arglist[0]) + " upgraded")
+                if ship.ship_id == int(arg_list[0]):
+                    ship.upgrade(arg_list[1], arg_list[2])
+                    print("[+] Ship with id " + str(arg_list[0]) + " upgraded")
 
     def do_ships(self, args):
         """ Show ships """
