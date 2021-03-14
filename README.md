@@ -1,5 +1,7 @@
 # schemabridge
 
+[![Build Status](https://cloud.drone.io/api/badges/frozenfoxx/schemabridge/status.svg?ref=refs/heads/main)](https://cloud.drone.io/frozenfoxx/schemabridge)
+
 CLI interface for [Schemaverse](https://schemaverse.com/).
 
 Docker Hub: [https://hub.docker.com/r/frozenfoxx/schemabridge](https://hub.docker.com/r/frozenfoxx/schemabridge).
